@@ -1,8 +1,9 @@
+import { SearchParams } from '@/typings'
 import { redirect } from 'next/navigation'
 import { FC } from 'react'
 
 interface SearchPageProps {
-  searchParams: any
+  searchParams: SearchParams
   params: {
     term: string
   }

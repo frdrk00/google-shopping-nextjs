@@ -106,7 +106,7 @@ const Header: FC<HeaderProps> = ({}) => {
               className="min-w-4"
               placeholder="Min Price..."
             >
-              {['', '100', '250', '500', '750', '900', '1000+'].map((_, i) => (
+              {['', '100', '250', '500', '750', '900', '1000'].map((_, i) => (
                 <SearchSelectItem key={i} value={_.toString()}>
                   {i === 0 ? 'No Minimum' : `$${_.toString()}`}
                 </SearchSelectItem>
