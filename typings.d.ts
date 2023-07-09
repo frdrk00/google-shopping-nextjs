@@ -79,6 +79,21 @@ export type ProductContent = {
     thumbnail: string[]
   }
   highlights?: string[]
+  specifications: [
+    {
+      items: [
+        {
+          title: string
+          value: string
+        },
+        {
+          title: string
+          value: string
+        }
+      ]
+      section_title: string
+    }
+  ]
   reviews: {
     rating: number
     top_review: {
