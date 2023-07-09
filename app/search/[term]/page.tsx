@@ -1,7 +1,10 @@
+import ResultsList from '@/components/ResultsList'
 import { getFetchUrl } from '@/lib/getFetchUrl'
 import { PageResult, SearchParams } from '@/typings'
 import { redirect } from 'next/navigation'
 import { FC } from 'react'
+
+export const revalidate = 300
 
 interface SearchPageProps {
   searchParams: SearchParams
