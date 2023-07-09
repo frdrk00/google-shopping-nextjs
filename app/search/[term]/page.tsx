@@ -1,4 +1,5 @@
-import { SearchParams } from '@/typings'
+import { getFetchUrl } from '@/lib/getFetchUrl'
+import { PageResult, SearchParams } from '@/typings'
 import { redirect } from 'next/navigation'
 import { FC } from 'react'
 
@@ -9,7 +10,7 @@ interface SearchPageProps {
   }
 }
 
-const SearchPage: FC<SearchPageProps> = ({
+const SearchPage: FC<SearchPageProps> = async ({
   searchParams,
   params: { term },
 }) => {
@@ -18,7 +19,20 @@ const SearchPage: FC<SearchPageProps> = ({
   }
 
   // fetch from API...
-  return <div>{/* Results List */}</div>
+  const response = await fetch(getFetchUrl('api/search'), {
+    method: 'POST',
+    body: JSON.stringify({ searchTerm: term, ...searchParams }),
+  })
+
+  const results = (await response.json()) as PageResult
+
+  console.log(results)
+
+  return (
+    <div>
+      <ResultsList results={results} term={term} />
+    </div>
+  )
 }
 
 export default SearchPage
