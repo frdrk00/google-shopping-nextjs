@@ -57,8 +57,9 @@ const ProductPage: FC<ProductPageProps> = async ({ params: { id } }) => {
             <div className="flex flex-col justify-between">
               {productData.content.images?.full_size
                 .slice(1, 3)
-                .map((image) => (
+                .map((image, i) => (
                   <img
+                    key={i}
                     src={image}
                     alt=""
                     className="w-[9.5rem] h-[9.5rem] object-contain border rounded-md"
@@ -68,8 +69,13 @@ const ProductPage: FC<ProductPageProps> = async ({ params: { id } }) => {
           </div>
 
           <div className="flex space-x-6 overflow-x-scroll no-scrollbar py-2 md:w-[30rem]">
-            {productData.content.images?.full_size.slice(3).map((image) => (
-              <img src={image} alt="" className="w-20 h-20 object-contain" />
+            {productData.content.images?.full_size.slice(3).map((image, i) => (
+              <img
+                key={i}
+                src={image}
+                alt=""
+                className="w-20 h-20 object-contain"
+              />
             ))}
           </div>
         </div>
@@ -114,8 +120,10 @@ const ProductPage: FC<ProductPageProps> = async ({ params: { id } }) => {
                 <h3 className="font-bold text-2xl">Product Highlights</h3>
                 <hr />
                 <ul className="space-y-2">
-                  {productData.content.highlights?.map((highlight) => (
-                    <li className="list-disc">{highlight}</li>
+                  {productData.content.highlights?.map((highlight, i) => (
+                    <li key={i} className="list-disc">
+                      {highlight}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -156,7 +164,7 @@ const ProductPage: FC<ProductPageProps> = async ({ params: { id } }) => {
                   ))}
                 </div>
 
-                <p>"{productData.content.reviews.top_review.text}"</p>
+                <p>&quot;{productData.content.reviews.top_review.text}&quot;</p>
               </div>
             )}
           </>
@@ -164,7 +172,7 @@ const ProductPage: FC<ProductPageProps> = async ({ params: { id } }) => {
           <div>
             <h3 className="font-bold text-2xl">Reviews</h3>
 
-            <h4 className="text-lg italic">No Reviews's yet</h4>
+            <h4 className="text-lg italic">No Reviews&apos;s yet</h4>
           </div>
         )}
       </section>

@@ -18,8 +18,9 @@ const ResultsList: FC<ResultsListProps> = ({ results, term }) => {
               <div key={i} className="border rounded-r-lg md:rounded-lg p-5">
                 <p className="font-bold">{filter.name}</p>
                 <div className="flex flex-col">
-                  {filter.values.map((value) => (
+                  {filter.values.map((value, i) => (
                     <Link
+                    key={i}
                       prefetch={false}
                       href={`https://www.google.com${value.url}`}
                     >
@@ -36,7 +37,7 @@ const ResultsList: FC<ResultsListProps> = ({ results, term }) => {
       {/* main body */}
       <div className="px-5 md:p-10 md:pt-0 space-y-5 flex-1">
         {results.map((pageResult, i) => (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+          <div key={i} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {i !== 0 && <hr className="w-full col-span-full" />}
 
             <div className="md:col-span-2 lg:col-span-3 xl:col-span-4 py-5">
@@ -47,7 +48,7 @@ const ResultsList: FC<ResultsListProps> = ({ results, term }) => {
                 </h2>
               </div>
               <h3 className="font-extralight">
-                Showing results for "{decodeURIComponent(term)}"
+                Showing results for &quot;{decodeURIComponent(term)}&quot;
               </h3>
             </div>
 
