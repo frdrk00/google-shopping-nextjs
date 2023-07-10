@@ -27,7 +27,7 @@ const SearchPage: FC<SearchPageProps> = async ({
     body: JSON.stringify({ searchTerm: term, ...searchParams }),
   })
 
-  const results = (await response.json()) as PageResult
+  const results = (await response.json()) as PageResult[]
 
   console.log(results)
 
